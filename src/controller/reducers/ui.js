@@ -1,4 +1,7 @@
-import * as uiActions from "../actions";
+import {
+  SET_LOADING_ON,
+  SET_LOADING_OFF,
+} from "../actions";
 
 const initialState = {
   loading: true,
@@ -6,8 +9,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case uiActions.SET_LOADING_ON:
-    case uiActions.SET_LOADING_OFF:
+    case SET_LOADING_ON:
+      return { ...state, loading: action.payload };
+    case SET_LOADING_OFF:
       return { ...state, loading: action.payload };
     default:
       return state;

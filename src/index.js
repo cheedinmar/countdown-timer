@@ -6,9 +6,10 @@ import { Provider } from "react-redux";
 import { ConfigureStore } from "./controller/store";
 import services from "./services/index";
 
+// const StoreContext = React.createContext();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={ConfigureStore(services)}>
+  <Provider store={ConfigureStore(services)} >
     <App />
   </Provider>
 );

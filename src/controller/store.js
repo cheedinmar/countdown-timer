@@ -1,8 +1,10 @@
-import { compose, applyMiddleware, createStore,  } from "redux";
-import reducers from "./reducers";
+import { compose, applyMiddleware, createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import reducer from "./reducers/index";
 import middleware from "./middleware";
 
 // dev tool
+
 const composeEnhancers =
   (process.env.NODE_ENV === "development" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
@@ -10,6 +12,7 @@ const composeEnhancers =
 
 export const ConfigureStore = (services) =>
   createStore(
-    reducers,
+    reducer,
+    {},
     composeEnhancers(applyMiddleware(...middleware.map((f) => f(services))))
   );

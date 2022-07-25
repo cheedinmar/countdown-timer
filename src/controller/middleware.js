@@ -1,24 +1,32 @@
 
 import * as uiActions from "./actions";
+import {
+  loadCountdownFailure,
+  loadCountdownSuccess,
+  LOAD_COUNTDOWN,
+  PAGE_LOADED,
+} from "./actions";
 
-const loadCountdownFlow =
-  ({ api }) =>
-  ({ dispatch }) =>
-  (next) =>
-  async (action) => {
+const loadCountdownFlow = ({ api , log}) => ({ dispatch }) =>(next) => async (action) => {
     next(action);
-
-    if (action.type === uiActions.LOAD_COUNTDOWN) {
+    if (action.type == LOAD_COUNTDOWN) {
       try {
         dispatch(uiActions.setLoading(true));
-        const countdown = await api.countdown.getAll();
-        dispatch(uiActions.loadContdownSuccess(countdown));
+        const countdown = await api.getAll();
+        dispatch(loadCountdownSuccess(countdown));
         dispatch(uiActions.setLoading(false));
       } catch (error) {
-        dispatch(uiActions.loadContdownFailure(error));
+        dispatch(loadCountdownFailure(error));
       }
     }
   };
 
+ const pageLoadedFlow = ({log}) => ({ dispatch }) => next => action => {
+    next(action);
+    if (action.type === PAGE_LOADED) {
+      dispatch(uiActions.loadCountdown);
+    }
+}
 
-export default [loadCountdownFlow];
+
+export default [loadCountdownFlow, pageLoadedFlow];

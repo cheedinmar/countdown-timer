@@ -18,12 +18,12 @@ export const loadCountdown = {
   type: LOAD_COUNTDOWN,
 };
 
-export const loadContdownSuccess = (Countdown) => ({
+export const loadCountdownSuccess = (Countdown) => ({
   type: LOAD_COUNTDOWN_SUCCESS,
   payload: Countdown,
 });
 
-export const loadContdownFailure = (error) => ({
+export const loadCountdownFailure = (error) => ({
   type: LOAD_COUNTDOWN_FAILURE,
   payload: error,
 });
