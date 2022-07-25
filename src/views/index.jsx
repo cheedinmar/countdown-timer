@@ -12,7 +12,7 @@ function App() {
   const countdown = useSelector(getCountdown);
   const loading = useSelector(getLoading);
 
-  const endTime = new Date().getTime() + countdown?.countdown_duration; // 2 minutes
+  const endTime = new Date().getTime() + 5180000; // 2 minutes
   const [timeLeft, setEndTime] = useCountdown(endTime);
   const hours = Math.floor(
     (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div>
-      {!countdown ? (
+      {!countdown  ? (
         <div
           style={{ backgroundImage: `url(${backgroundImage})` }}
           className="backgroundImage w-fit h-screen flex flex-col items-center justify-center"

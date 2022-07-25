@@ -20,7 +20,6 @@ export default function useCountdown(endTime) {
     const timer = setInterval(() => {
       const targetLeft = calcTimeLeft(end);
       setTimeLeft(targetLeft);
-
       if (targetLeft === 0) {
         clearInterval(timer);
       }
