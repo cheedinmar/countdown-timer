@@ -5,21 +5,12 @@ import { getLoading, getCountdown } from "../controller/selectors";
 import backgroundImage from "../assets/images/background_scale_1x.jpeg";
 import topImage from "../assets/images/top_image_scale_1x.png";
 import "../assets/App.css";
-import useCountdown from "./useCountdown";
+// import useCountdown from "./UseCountdown";
 
 function App() {
   const dispatch = useDispatch();
   const countdown = useSelector(getCountdown);
   const loading = useSelector(getLoading);
-
-  const endTime = new Date().getTime() + 5180000; // 2 minutes
-  const [timeLeft, setEndTime] = useCountdown(endTime);
-  const hours = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor(timeLeft / 60000) % 60;
-  const seconds = Math.floor(timeLeft / 1000) % 60;
-
   useEffect(() => {
     dispatch(pageLoaded);
   }, []);
@@ -47,23 +38,23 @@ function App() {
           </p>
           <div className="w-1/2 flex items-center justify-between mb-16 ">
             <div className="flex flex-col items-center">
-              <span className="text-white text-7xl font-black">{hours}</span>
+              <span className="text-white text-7xl font-black">{countdown.hours}</span>
               <span className="font-bold text-blue-300">Hours</span>
             </div>
             <p className="text-white text-7xl font-black">:</p>
             <div className="flex flex-col items-center">
-              <span className="text-white text-7xl font-black">{minutes}</span>
+              <span className="text-white text-7xl font-black">{countdown.minutes}</span>
               <span className="font-bold text-green-400">Minutes</span>
             </div>
             <p className="text-white text-7xl font-black">:</p>
             <div className="flex flex-col items-center">
-              <span className="text-white text-7xl font-black">{seconds}</span>
+              <span className="text-white text-7xl font-black">{countdown.seconds}</span>
               <span className="font-bold text-yellow-700">Seconds</span>
             </div>
           </div>
           <a
             href={countdown.URL}
-            target="_blank"
+            target="_blank" rel="noreferrer"
             className="px-16 py-4 text-white font-black shadow-lg rounded bg-gradient-to-r from-blue-300 via-green-400 to-yellow-700 animate-bounce"
           >
             Opt in

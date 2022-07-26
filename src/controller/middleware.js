@@ -5,15 +5,18 @@ import {
   loadCountdownSuccess,
   LOAD_COUNTDOWN,
   PAGE_LOADED,
+  getCountdownDuration,
 } from "./actions";
+
 
 const loadCountdownFlow = ({ api , log}) => ({ dispatch }) =>(next) => async (action) => {
     next(action);
-    if (action.type == LOAD_COUNTDOWN) {
+    if (action.type === LOAD_COUNTDOWN) {
       try {
         dispatch(uiActions.setLoading(true));
         const countdown = await api.getAll();
         dispatch(loadCountdownSuccess(countdown));
+        dispatch(getCountdownDuration(countdown.countdown_duration));
         dispatch(uiActions.setLoading(false));
       } catch (error) {
         dispatch(loadCountdownFailure(error));
@@ -25,6 +28,7 @@ const loadCountdownFlow = ({ api , log}) => ({ dispatch }) =>(next) => async (ac
     next(action);
     if (action.type === PAGE_LOADED) {
       dispatch(uiActions.loadCountdown);
+      
     }
 }
 

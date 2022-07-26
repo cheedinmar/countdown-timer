@@ -1,2 +1,2 @@
 export const getLoading = (state) => state.ui;
-export const getCountdown = (state) => state.countdown.countdown;
+export const getCountdown = (state) => state;

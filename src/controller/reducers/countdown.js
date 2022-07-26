@@ -2,10 +2,11 @@ import {
   LOAD_COUNTDOWN_SUCCESS,
   LOAD_COUNTDOWN,
   LOAD_COUNTDOWN_FAILURE,
+  GET_COUNTDOWN_DURATION,
 } from "../actions";
 const initialState = {
   countdown: null,
-  error: null,
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,10 +17,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, error: action.payload };
     case LOAD_COUNTDOWN:
       return { countdown: action.payload, error: null };
-    default:
+     default:
       return state;
   }
 };
-
 
 export default reducer;
