@@ -2,7 +2,6 @@ import {
   LOAD_COUNTDOWN_SUCCESS,
   LOAD_COUNTDOWN,
   LOAD_COUNTDOWN_FAILURE,
-  GET_COUNTDOWN_DURATION,
 } from "../actions";
 const initialState = {
   countdown: null,

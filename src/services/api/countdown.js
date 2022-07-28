@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   getAll: async () => {
     const response = await axios.get(
-      "getcountdowm.json"
+      "data.json"
     );
 
     return response.data;

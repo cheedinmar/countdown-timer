@@ -1,5 +1,4 @@
 import { compose, applyMiddleware, createStore } from "redux";
-import { configureStore } from "@reduxjs/toolkit";
 import reducer from "./reducers/index";
 import middleware from "./middleware";
 

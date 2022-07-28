@@ -16,16 +16,17 @@ function App() {
   let endTime = countdown?.countdown_duration;
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(endTime));
   useEffect(() => {
+        updatePixelRatio(setPixelRatio);
+  }, []);
+  useEffect(() => {
+      dispatch(pageLoaded);
+    }, []);
+  useEffect(() => {
    setTimeout(() => {
       setTimeLeft(calculateTimeLeft(endTime));
     }, 1000);
   });
-  useEffect(() => {
-    dispatch(pageLoaded);
-  }, []);
-    useEffect(() => {
-      updatePixelRatio(setPixelRatio);
-    }, []);
+
 
   return (
     <div>
