@@ -45,7 +45,6 @@ function App() {
       { once: true }
     );
     setPixelRatio(pr)
-    console.log(pixelRatio)
   };
 
   
