@@ -10,17 +10,10 @@ export const pageLoaded = {
   type: PAGE_LOADED,
 };
 
-export const setLoading = (isLoading) => ({
-  type: isLoading ? SET_LOADING_ON : SET_LOADING_OFF,
-  payload: isLoading,
-});
 export const loadCountdown = {
   type: LOAD_COUNTDOWN,
 };
-export const getCountdownDuration = (Duration) => ({
-  type: GET_COUNTDOWN_DURATION,
-  payload: Duration,
-});
+
 
 export const loadCountdownSuccess = (Countdown) => ({
   type: LOAD_COUNTDOWN_SUCCESS,
