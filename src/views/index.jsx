@@ -6,6 +6,7 @@ import backgroundImage1x from "../assets/images/background_scale_1x.jpeg";
 import backgroundImage2x from "../assets/images/background_scale_2x.jpeg";
 import topImage1x from "../assets/images/top_image_scale_1x.png";
 import topImage2x from "../assets/images/top_image_scale_2x.png";
+import { calculateTimeLeft, updatePixelRatio } from "../util";
 import "../assets/App.css";
 
 function App() {
@@ -13,52 +14,17 @@ function App() {
   const countdown = useSelector(getCountdown);
    let [pixelRatio, setPixelRatio] = useState(null);
   let endTime = countdown?.countdown_duration;
-  const calculateTimeLeft = () => {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1;
-    const year = currentDate.getFullYear();
-    const difference =
-      new Date(`${year}-${month}-${day} ` + endTime) - currentDate;
-    let timeLeft = {};
-    if (difference > 0) {
-      timeLeft = {
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    } else {
-      timeLeft = {
-        hours: '00',
-        minutes: '00',
-        seconds: '00',
-        hidden: true,
-      };
-    }
-    return timeLeft;
-  };
-  const updatePixelRatio = () => {
-    let pr = window.devicePixelRatio;
-    matchMedia(`(resolution: ${pr}dppx)`).addEventListener(
-      "change",
-      updatePixelRatio,
-      { once: true }
-    );
-    setPixelRatio(pr)
-  };
-
-  
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(endTime));
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+   setTimeout(() => {
+      setTimeLeft(calculateTimeLeft(endTime));
     }, 1000);
   });
   useEffect(() => {
     dispatch(pageLoaded);
   }, []);
     useEffect(() => {
-      updatePixelRatio();
+      updatePixelRatio(setPixelRatio);
     }, []);
 
   return (
