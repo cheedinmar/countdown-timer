@@ -16,6 +16,7 @@ function App() {
    let [pixelRatio, setPixelRatio] = useState(null);
   let endTime = countdown?.countdown_duration;
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(endTime));
+  console.log('Please check the README.md on how to set countdown_duration')
   useEffect(() => {
         updatePixelRatio(setPixelRatio);
   }, []);
