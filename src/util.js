@@ -1,3 +1,6 @@
+const chooseTime=(time)=>{
+ return time < 10 ? `0${time}` : time
+}
 export const calculateTimeLeft = (endTime) => {
   const currentDate = new Date();
   const day = currentDate.getDate();
@@ -9,9 +12,9 @@ export const calculateTimeLeft = (endTime) => {
   let timeLeft = {};
   if (difference > 0) {
     timeLeft = {
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      hours: chooseTime(Math.floor((difference / (1000 * 60 * 60)) % 24)),
+      minutes: chooseTime(Math.floor((difference / 1000 / 60) % 60)),
+      seconds: chooseTime(Math.floor((difference / 1000) % 60)),
     };
   } else {
     timeLeft = {

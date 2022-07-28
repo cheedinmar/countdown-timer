@@ -25,7 +25,7 @@ function App() {
   }, []);
   useEffect(() => {
       dispatch(pageLoaded);
-    }, []);
+    }, [dispatch]);
   useEffect(() => {
    setTimeout(() => {
       setTimeLeft(calculateTimeLeft(endTime));
