@@ -49,7 +49,7 @@ function App() {
         </div>
       ) : (
         <CSSTransition
-          in={!timeLeft.hidden}
+          in={countdown}
           timeout={300}
           classNames="example"
           unmountOnExit
@@ -63,14 +63,14 @@ function App() {
             }}
             className="backgroundImage w-fit h-screen flex flex-col items-center justify-center  lg:space-y-5 space-y-8"
           >
-            {(!timeLeft.hidden || countdown) && (
+            {(!timeLeft.hidden) && (
               <img
                 src={pixelRatio >= 2 ? topImage2x : topImage1x}
                 alt=""
                 className="lg:w-1/4 w-2/3 lg:mt-8 mt-0 "
               />
             )}
-            {(!timeLeft.hidden || countdown) && (
+            {(!timeLeft.hidden) && (
               <p className="text-3xl md:text-4xl font-bold text-yellow-700 mb-5">
                 Get your free{" "}
                 <span className="text-green-500 text-4xl font-black">
@@ -116,7 +116,7 @@ function App() {
               </div>
             </div>
             <div className="h-10"></div>
-            {(!timeLeft.hidden || countdown) && (
+            {(!timeLeft.hidden) && (
               <a
                 href={countdown.URL}
                 target="_blank"
